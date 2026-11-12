@@ -1,6 +1,6 @@
-# Como o Claude Code usa as próprias memórias: um estudo em nove testes
+# Estudo de caso: como o Claude Code usa, e não usa, as próprias memórias
 
-*Estudo de caso · novembro de 2026 · um acervo de 170 memórias*
+*Nove testes · novembro de 2026 · um acervo de 170 memórias*
 
 Nove testes sobre as memórias do Claude Code. Uma busca que recupera quase o dobro das memórias certas não mudou a nota das respostas. O único efeito distinguível de zero veio de entregar o resultado da busca sem o agente pedir. Ele reapareceu com um segundo modelo, e o tamanho continua incerto. Abaixo, o que sustenta cada conclusão e o que a enfraquece.
 
