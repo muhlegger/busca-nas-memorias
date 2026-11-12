@@ -60,6 +60,8 @@ O **±** é o intervalo de 95% da diferença por tarefa. Diferença menor que o 
 
 As tarefas reais dos testes 5, 6, 7 e 9 são pedidos que eu fiz de verdade ao agente, com o texto original, informal e com erros de digitação. Só acrescentei uma frase de contexto onde o pedido não se sustentava sozinho. São perguntas abertas, em que a resposta depende do estado do projeto ou do ambiente, e não consultas de um fato.
 
+O desenho do teste é sempre o mesmo. Em cada pedido, o que importa para responder bem está registrado nas memórias, seja porque foi descoberto naquela conversa, seja porque já estava anotado antes. O teste repete o pedido para um agente novo, sem a conversa original, e observa se ele aproveita esse registro.
+
 | Tipo de pedido | Tarefas | Exemplo |
 |---|---:|---|
 | Avaliar uma decisão técnica | 7 | Quanto custa o GitHub Actions e que ganho teríamos com ele? |
@@ -90,7 +92,14 @@ Para cada resposta, o juiz devolve quatro coisas:
 
 A nota tem uma ordem de prioridade escrita na instrução: primeiro não errar nem repetir um erro já registrado, depois aproveitar o que já se sabe, depois a utilidade prática. Nos testes com perguntas (2 a 4), no lugar dos critérios o juiz estima a cobertura, de 0 a 1: quanto do conteúdo essencial a resposta realmente traz. Citar o arquivo não conta.
 
-Um exemplo de critérios, da tarefa do monitor: dizer que a saída USB-C do notebook não leva vídeo; dizer que o limite está na porta HDMI, e que adaptador ou cabo novo não aumentam a taxa; informar o teto atual e concluir que a compra não vale; e, se for mexer de novo, apontar os scripts que já existem em vez de propor tudo do zero.
+Um exemplo, da tarefa do monitor. O pedido é uma dúvida que eu tive dias antes: se um adaptador DisplayPort permitiria usar a taxa de atualização mais alta do monitor externo. Na época, a investigação mostrou que não, e o motivo ficou anotado numa memória. No teste, a mesma dúvida vai para um agente novo, que não viu aquela conversa. Os critérios conferem se ele aproveita o que já foi descoberto:
+
+- reconhece que a saída USB-C daquele notebook não leva vídeo;
+- reconhece que o limite está na porta HDMI, e que adaptador ou cabo não mudam isso;
+- informa o teto que já foi alcançado e conclui que a compra não vale;
+- se for mexer na configuração de novo, aponta os scripts que já existem em vez de refazer tudo.
+
+Os critérios não avaliam a pergunta nem quem a fez. Avaliam se o agente chega, com a ajuda das memórias, à resposta que já tinha custado uma investigação, em vez de começar do zero ou repetir um caminho que já se mostrou errado.
 
 > **Ressalva:** a nota não é calculada a partir dos critérios. É um julgamento único do juiz, com uma ordem de prioridade e sem pesos. E as respostas são avaliadas lado a lado, então a nota de uma depende em parte das outras que estão na mesma chamada. Por isso as diferenças dentro de uma rodada são mais confiáveis que a comparação de notas entre rodadas.
 
